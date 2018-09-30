@@ -9,5 +9,6 @@ setup(name='yspacepy',
       author_email='narcarvalho@gmail.com',
       license='MIT',
       packages=find_packages(),
+      install_requires=['astropy'],
       zip_safe=False)
 
