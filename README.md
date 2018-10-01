@@ -15,3 +15,7 @@ Unit("km")
 <Quantity 1.496e+08 km>
 ```
 
+## Installation
+
+    $ pip install yspacepy
+
