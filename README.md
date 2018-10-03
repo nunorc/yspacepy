@@ -9,6 +9,10 @@
 695508.0
 >>> sun.radius.unit
 Unit("km")
+>>> sun.radius.to('au').value
+0.004649183820234682
+>>> sun.radius.to('au').unit
+Unit("AU")
 >>> sun.radius
 <Quantity 695508. km>
 >>> sun.dist('earth')
