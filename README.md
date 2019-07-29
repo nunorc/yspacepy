@@ -15,6 +15,19 @@ Unit("km")
 <Quantity 1.496e+08 km>
 ```
 
+## Using the API interface
+
+Using the interface for the [y-space API](http://y-space.pw/api):
+
+```python
+>>> from yspacepy.api import ysapi
+>>> api = ysapi()
+>>> api.messier.list()
+['m1', 'm2', 'm3', 'm4', 'm5', ...
+>>> api.messier.id('m1')
+{'con': 'Tau', 'dec': '+22° 01′', 'dist': '6300', ...
+```
+
 ## Installation
 
     $ pip install yspacepy

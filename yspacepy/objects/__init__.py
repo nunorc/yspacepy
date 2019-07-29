@@ -6,6 +6,7 @@ class Object:
         self.name   = props['name']
         self.mass   = props['mass']
         self.radius = props['radius']
+        self.dist   = props['dists']
         self.dists  = props['dists']
     
     def dist(self, to):

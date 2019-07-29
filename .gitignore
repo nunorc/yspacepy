@@ -4,3 +4,4 @@ build/
 .eggs/
 lib/
 yspacepy.egg-info/
+Makefile
