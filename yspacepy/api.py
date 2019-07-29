@@ -48,6 +48,6 @@ class Messier():
 class ysapi():
     def __init__(self, api=API):
         self.api = api
-        self.exoplanates = Exoplanets(self.api)
+        self.exoplanets = Exoplanets(self.api)
         self.messier     = Messier(self.api)
 
