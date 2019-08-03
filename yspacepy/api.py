@@ -45,9 +45,20 @@ class Messier():
     def id(self, pl_name):
         return _get(self.api, 'messier', 'id', pl_name)
 
+class Sunspots():
+    def __init__(self, api=API):
+        self.api = api
+
+    def daily(self):
+        return _get(self.api, 'sunspots', 'daily')
+
+    def monthly(self):
+        return _get(self.api, 'sunspots', 'monthly')
+
 class ysapi():
     def __init__(self, api=API):
         self.api = api
         self.exoplanets = Exoplanets(self.api)
-        self.messier     = Messier(self.api)
+        self.messier    = Messier(self.api)
+        self.sunspots   = Sunspots(self.api)
 
