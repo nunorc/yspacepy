@@ -1,6 +1,6 @@
 
 from astropy import units as u
-from .obejcts import Object
+from .objects import Object
 
 sun = Object({
         'name': 'Sun',
