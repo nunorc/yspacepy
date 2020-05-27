@@ -3,21 +3,21 @@ from astropy import units as u
 
 class Object:
     def __init__(self, props):
-        self.name   = props['name']
-        self.mass   = props['mass']
+        self.name  = props['name']
+        self.mass  = props['mass']
         self.radius = props['radius']
-        self.dist   = props['dists']
-        self.dists  = props['dists']
+        self.dists = props['dists']
     
     def dist(self, to):
-        if to in self.dists:
-            return self.dists[to]
+        name = to.name.lower()
+
+        if name in self.dists:
+            return self.dists[name]
         else:
             return 'n/a'
 
-    def to_string(self):
-        print("[{}] radius: {:.3e}, mass: {:.3e}".format(self.name, self.mass, self.radius))
-
+    def __repr__(self):
+         return "<{} r={:.3e}, m={:.3e}>".format(self.name, self.radius, self.mass)
 
 sun = Object({
         'name': 'Sun',
@@ -48,3 +48,4 @@ neptune = Object({
             'mass': 1.024e26 * u.kg,
             'radius': 24622 * u.km,
             'dists': {'sun': 4.495e9 * u.km} })
+
