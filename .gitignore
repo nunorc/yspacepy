@@ -5,3 +5,4 @@ build/
 lib/
 yspacepy.egg-info/
 Makefile
+docs/doctrees
