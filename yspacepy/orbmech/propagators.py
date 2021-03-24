@@ -1,4 +1,6 @@
 
+""" Orbit propagators. """
+
 import numpy as np
 import math as m
 from scipy.integrate import ode
@@ -7,6 +9,17 @@ def null_perts():
     return { 'j2': False, 'aero': False, 'n_bodies': [] }
 
 class OrbitPropagator:
+    """ Orbit propagator class.
+
+    Arguments:
+        state0: the initial state vector, position and velocity eg. [rx, ry, rz, vx, vy, vz]
+        tspan: time span of propagation
+        dt: time step
+        cb: central body, a Body class instance
+
+    Returns:
+        op: OrbitPropagator instance
+    """
     def __init__(self, state0, tspan, dt, cb, coes=True, degrees=True, propagate=True, perts=null_perts()):
         if coes:
             self.r0, self.v0 = coes2rv(state0, cb, degrees)
@@ -35,9 +48,9 @@ class OrbitPropagator:
         if propagate:
             self.propagate_orbit()
 
-    def propagate_orbit(self):
+    def _propagate_orbit(self):
         # init ode
-        solver = ode(self.diffy_q)
+        solver = ode(self._diferential)
         solver.set_integrator('vode')
         solver.set_initial_value(self.y0, 0)
 
@@ -52,7 +65,7 @@ class OrbitPropagator:
         self.vs = self.ys[:, 3:]
 
     # function to integrate
-    def diffy_q(self, t, y):
+    def _diferential(self, t, y):
         rx, ry, rz, vx, vy, vz = y
         r = np.array([rx, ry, rz])
 
@@ -65,3 +78,4 @@ class OrbitPropagator:
             pass
 
         return [vx, vy, vz, ax, ay, az]
+

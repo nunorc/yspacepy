@@ -1,4 +1,6 @@
 
+""" Solar System bodies. """
+
 from astropy import units as u
 from .bodies import Body
 

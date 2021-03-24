@@ -1,9 +1,21 @@
 
+""" Orbital mechnics plotting functions. """
+
 import numpy as np
 import matplotlib.pyplot as plt
-from mpl_toolkits.mplot3d  import Axes3D
+from mpl_toolkits.mplot3d import Axes3D
 
-def plot_n_orbits(ops, labels, cb):
+def plot_orbits(ops, labels, cb):
+    """ Plot a list of orbits
+
+    Arguments:
+        ops: a list of OrbitPropagators objects
+        labels: a list of labels
+        cb: central body, a Body object
+
+    Returns:
+        plot: a plot
+    """
     fig = plt.figure(figsize=(10, 10))
     ax = fig.add_subplot(111, projection='3d')
 
@@ -16,8 +28,8 @@ def plot_n_orbits(ops, labels, cb):
 
     # plot trajectories
     i = 0
-    #colors = ["#7cb5ec", "#434348", "#90ed7d", "#f7a35c", "#8085e9", "#f15c80", "#e4d354", "#2b908f", "#f45b5b", "#91e8e1"]
-    colors = ['#1f77b4','#2ca02c','#d62728','#9467bd','#8c564b','#e377c2','#7f7f7f','#bcbd22','#17becf']
+    colors = ['#1f77b4', '#2ca02c', '#d62728', '#9467bd',
+              '#8c564b', '#e377c2', '#7f7f7f', '#bcbd22']
     lines = []
     for op in ops:
         r = op.rs
@@ -39,7 +51,7 @@ def plot_n_orbits(ops, labels, cb):
             max_val = curr_max
     ax.set_xlim([-max_val, max_val])
     ax.set_ylim([-max_val, max_val])
-    ax.set_zlim([-max_val, max_val])  
+    ax.set_zlim([-max_val, max_val])
 
     # set labels
     ax.set_xlabel('X (m)')

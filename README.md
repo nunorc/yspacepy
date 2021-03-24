@@ -1,24 +1,11 @@
 
 # yspacepy
 
-## Using the API interface
-
-Using the interface for the [y-space API](http://y-space.pw/api):
-
-```python
->>> from yspacepy.api import ysapi
->>> api = ysapi()
->>> api.messier.list()
-['m1', 'm2', 'm3', 'm4', 'm5', ...
->>> api.messier.id('m1')
-{'con': 'Tau', 'dec': '+22° 01′', 'dist': '6300', ...
-```
-
 ## Installation
 
     $ pip install yspacepy
 
-## Using Bodies
+## Astronomical Bodies
 
 ```python
 >>> from yspacepy.bodies import earth
@@ -26,8 +13,6 @@ Using the interface for the [y-space API](http://y-space.pw/api):
 Body(name='Earth', mass=5.972e+24 kg, radius=6371000.0 m, mu=398589196000000.0 m3 / s2)
 >>> earth.radius
 <Quantity 6371000. m>
->>> earth.radius.to('km').value
-6371.0
 >>> earth.radius.to('km')
 <Quantity 6371. km>
 >>> earth.radius.to('km').value
@@ -41,7 +26,7 @@ Earth orbit around the Sun example.
 ```python
 import numpy as np
 from yspacepy.bodies import sun, earth
-from yspacepy.orbmech import OrbitPropagator, plot_n_orbits
+from yspacepy.orbmech import OrbitPropagator, plot_orbits
 
 # initial conditions of orbital parameters
 r_mag = sun.radius.value + 1.496e11
@@ -60,7 +45,7 @@ dt = 86400.0
 sun_earth = OrbitPropagator(state0, tspan, dt, sun, coes=False)
 
 # plot orbit
-plot_n_orbits([sun_earth], labels=['Earth'], cb=sun)# plot orbit
+plot_orbits([sun_earth], labels=['Earth'], cb=sun)# plot orbit
 ```
 
 ISS low earth orbit around the Earth example.
@@ -86,5 +71,5 @@ dt = 100.0
 earth_iis = OrbitPropagator(state0, tspan, dt, earth, coes=False)
 
 # plot orbit
-plot_n_orbits([earth_iis], labels=['IIS'], cb=earth)
+plot_orbits([earth_iis], labels=['IIS'], cb=earth)
 ```

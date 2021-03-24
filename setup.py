@@ -14,6 +14,5 @@ setup(name='yspacepy',
       long_description_content_type='text/markdown',
       license='MIT',
       packages=find_packages(),
-      install_requires=['astropy'],
+      install_requires=['astropy', 'numpy', 'scipy'],
       zip_safe=False)
-
